@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="pterodactyl" size="5.000000 7.006370" />
+    <ImageTarget name="Parasaurolophus" size="5.000000 7.006370" />
+    <ImageTarget name="T-Rex" size="5.000000 7.197452" />
+  </Tracking>
+</QCARConfig>

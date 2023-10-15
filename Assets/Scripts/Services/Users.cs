@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 /// <summary>
-/// Список пользователей.
+/// РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 /// </summary>
 [Serializable]
 public sealed class UsersData
@@ -11,7 +11,7 @@ public sealed class UsersData
 }
 
 /// <summary>
-/// Запись о пользователе.
+/// Р—Р°РїРёСЃСЊ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.
 /// </summary>
 [Serializable]
 public sealed class User

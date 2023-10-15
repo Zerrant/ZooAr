@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// Осуществление регистрации пользователя.
+/// РћСЃСѓС‰РµСЃС‚РІР»РµРЅРёРµ СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 /// </summary>
 public class Register : MonoBehaviour
 {
@@ -18,18 +18,18 @@ public class Register : MonoBehaviour
     [SerializeField] private Button _popupOkButton;
 
     /// <summary>
-    /// Обработать нажатие на кнопку регистрацияю.
+    /// РћР±СЂР°Р±РѕС‚Р°С‚СЊ РЅР°Р¶Р°С‚РёРµ РЅР° РєРЅРѕРїРєСѓ СЂРµРіРёСЃС‚СЂР°С†РёСЏСЋ.
     /// </summary>
     public void OnRegisterClick() {
         if (string.IsNullOrWhiteSpace(_login.text) || string.IsNullOrWhiteSpace(_login.text) || string.IsNullOrWhiteSpace(_login.text)) {
-            _popupText.text = "Некоторые поля не заполнены";
+            _popupText.text = "РќРµРєРѕС‚РѕСЂС‹Рµ РїРѕР»СЏ РЅРµ Р·Р°РїРѕР»РЅРµРЅС‹";
             _popup.SetActive(true);
             _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
             return;
         }
 
         if (_password.text != _repeatPassword.text) {
-            _popupText.text = "Пароли должны совподать";
+            _popupText.text = "РџР°СЂРѕР»Рё РґРѕР»Р¶РЅС‹ СЃРѕРІРїРѕРґР°С‚СЊ";
             _popup.SetActive(true);
             _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
             return;
@@ -40,7 +40,7 @@ public class Register : MonoBehaviour
         usersData ??= new() { Users = new List<User>() };
 
         if (usersData.Users.Any(user => user.Login == _login.text)) {
-            _popupText.text = "Пользователь с таким именем уже существует";
+            _popupText.text = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
             _popup.SetActive(true);
             _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
             return;

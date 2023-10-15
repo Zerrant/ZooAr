@@ -3,7 +3,7 @@ using UnityEngine;
 using Vuforia;
 
 /// <summary>
-/// Отслеживание положения камеры пользователя.
+/// РћС‚СЃР»РµР¶РёРІР°РЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РєР°РјРµСЂС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 /// </summary>
 [RequireComponent(typeof(ImageTargetBehaviour), typeof(DefaultObserverEventHandler))]
 public class TrackDistance : MonoBehaviour
@@ -20,19 +20,19 @@ public class TrackDistance : MonoBehaviour
     private bool _objectActive = false;
 
     /// <summary>
-    /// Показать объекты когда найдена карточка.
+    /// РџРѕРєР°Р·Р°С‚СЊ РѕР±СЉРµРєС‚С‹ РєРѕРіРґР° РЅР°Р№РґРµРЅР° РєР°СЂС‚РѕС‡РєР°.
     /// </summary>
     public void OnTargetFound() {
         if (_instantiateObject == null) InstantiatePrefab();
 
         _worldCanvas.gameObject.SetActive(true);
         _popup.SetActive(true);
-        _popupText.text = "T-Rex\nЯвляется крупнейшим видом своего семейства, одним из самых больших "
-            + "представителей тероподов и одним из самых крупных наемных хищников за всю историю Земли";
+        _popupText.text = "T-Rex\nРЇРІР»СЏРµС‚СЃСЏ РєСЂСѓРїРЅРµР№С€РёРј РІРёРґРѕРј СЃРІРѕРµРіРѕ СЃРµРјРµР№СЃС‚РІР°, РѕРґРЅРёРј РёР· СЃР°РјС‹С… Р±РѕР»СЊС€РёС… "
+            + "РїСЂРµРґСЃС‚Р°РІРёС‚РµР»РµР№ С‚РµСЂРѕРїРѕРґРѕРІ Рё РѕРґРЅРёРј РёР· СЃР°РјС‹С… РєСЂСѓРїРЅС‹С… РЅР°РµРјРЅС‹С… С…РёС‰РЅРёРєРѕРІ Р·Р° РІСЃСЋ РёСЃС‚РѕСЂРёСЋ Р—РµРјР»Рё";
     }
 
     /// <summary>
-    /// Скрыть объекты, когда карточка пропала из вида камеры.
+    /// РЎРєСЂС‹С‚СЊ РѕР±СЉРµРєС‚С‹, РєРѕРіРґР° РєР°СЂС‚РѕС‡РєР° РїСЂРѕРїР°Р»Р° РёР· РІРёРґР° РєР°РјРµСЂС‹.
     /// </summary>
     public void OnTargetLost() {
         if (_instantiateObject == null) return;
@@ -61,7 +61,7 @@ public class TrackDistance : MonoBehaviour
     }
 
     /// <summary>
-    /// Создать на сцене модель.
+    /// РЎРѕР·РґР°С‚СЊ РЅР° СЃС†РµРЅРµ РјРѕРґРµР»СЊ.
     /// </summary>
     private void InstantiatePrefab() {
         if (_prefabObject != null) {

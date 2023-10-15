@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// Осуществление входа в учётную запись пользователя.
+/// РћСЃСѓС‰РµСЃС‚РІР»РµРЅРёРµ РІС…РѕРґР° РІ СѓС‡С‘С‚РЅСѓСЋ Р·Р°РїРёСЃСЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 /// </summary>
 public class Login : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class Login : MonoBehaviour
     [SerializeField] private Button _popupOkButton;
 
     /// <summary>
-    /// Осуществить вход в учётную запись при нажатии на кнопку войти.
+    /// РћСЃСѓС‰РµСЃС‚РІРёС‚СЊ РІС…РѕРґ РІ СѓС‡С‘С‚РЅСѓСЋ Р·Р°РїРёСЃСЊ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ РІРѕР№С‚Рё.
     /// </summary>
     public void OnLoginClicked() {
         var usersData = SavingService.LoadData();
@@ -27,7 +27,7 @@ public class Login : MonoBehaviour
             return;
         }
 
-        _popupText.text = "Неверный логин или пароль";
+        _popupText.text = "РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ";
         _popup.SetActive(true);
         _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
     }

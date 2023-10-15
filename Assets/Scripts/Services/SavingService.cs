@@ -5,12 +5,12 @@ using UnityEngine;
 public static class SavingService
 {
     /// <summary>
-    /// Путь временным файла приложения.
+    /// РџСѓС‚СЊ РІСЂРµРјРµРЅРЅС‹Рј С„Р°Р№Р»Р° РїСЂРёР»РѕР¶РµРЅРёСЏ.
     /// </summary>
     public static string filePath = Application.persistentDataPath + "/usersdata.json";
 
     /// <summary>
-    /// Сохранение списка пользоватей.
+    /// РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР№.
     /// </summary>
     /// <param name="data"></param>
     public static void SaveData(UsersData data) {
@@ -26,7 +26,7 @@ public static class SavingService
     }
 
     /// <summary>
-    /// Загрузка списка пользователей.
+    /// Р—Р°РіСЂСѓР·РєР° СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
     /// </summary>
     /// <returns></returns>
     public static UsersData LoadData() {

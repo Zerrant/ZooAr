@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Осуществляет навигацию по меню приложения.
+/// РћСЃСѓС‰РµСЃС‚РІР»СЏРµС‚ РЅР°РІРёРіР°С†РёСЋ РїРѕ РјРµРЅСЋ РїСЂРёР»РѕР¶РµРЅРёСЏ.
 /// </summary>
 public class MenuRouting : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class MenuRouting : MonoBehaviour
     }
 
     /// <summary>
-    /// Обработать нажатие на стартовый экран.
+    /// РћР±СЂР°Р±РѕС‚Р°С‚СЊ РЅР°Р¶Р°С‚РёРµ РЅР° СЃС‚Р°СЂС‚РѕРІС‹Р№ СЌРєСЂР°РЅ.
     /// </summary>
     public void OnStartScreenClick() {
         _startScreen.SetActive(false);
@@ -24,7 +24,7 @@ public class MenuRouting : MonoBehaviour
     }
 
     /// <summary>
-    /// Обработать нажатие на строку с предллжением регистрации.
+    /// РћР±СЂР°Р±РѕС‚Р°С‚СЊ РЅР°Р¶Р°С‚РёРµ РЅР° СЃС‚СЂРѕРєСѓ СЃ РїСЂРµРґР»Р»Р¶РµРЅРёРµРј СЂРµРіРёСЃС‚СЂР°С†РёРё.
     /// </summary>
     public void OnRegisterClick() {
         _loginScreen.SetActive(false);
@@ -32,7 +32,7 @@ public class MenuRouting : MonoBehaviour
     }
 
     /// <summary>
-    /// Обработать нажатие на строку с предложением войти в аккаунт.
+    /// РћР±СЂР°Р±РѕС‚Р°С‚СЊ РЅР°Р¶Р°С‚РёРµ РЅР° СЃС‚СЂРѕРєСѓ СЃ РїСЂРµРґР»РѕР¶РµРЅРёРµРј РІРѕР№С‚Рё РІ Р°РєРєР°СѓРЅС‚.
     /// </summary>
     public void OnLoginClick() {
         _loginScreen.SetActive(true);

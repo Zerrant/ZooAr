@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 
 /// <summary>
@@ -11,11 +12,12 @@ public class TrackDistance : MonoBehaviour
     [Header("UI Components")]
     [SerializeField] private GameObject _popup;
     [SerializeField] private TMP_Text _popupText;
+    [SerializeField] private Button _closeButton;
 
     [Header("Animal model components")]
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _prefabObject;
-    [SerializeField] private string _description;
+    [SerializeField] [TextArea(5, 10)] private string _description;
 
     private GameObject _instantiateObject;
     private Transform _cahcedTransform;
@@ -28,8 +30,15 @@ public class TrackDistance : MonoBehaviour
     public void OnTargetFound() {
         if (_instantiateObject == null) InstantiatePrefab();
 
+        if (!_objectActive) {
+            _instantiateObject.SetActive(true);
+            _objectActive = true;
+        }
+
         _popup.SetActive(true);
         _popupText.text = _description;
+
+        _closeButton.onClick.AddListener(CloseDescription);
 
 #if DEBUG
         Debug.Log(_instantiateObject.name);
@@ -44,6 +53,8 @@ public class TrackDistance : MonoBehaviour
 
         _instantiateObject.SetActive(false);
         _popup.SetActive(false);
+
+        _closeButton.onClick.RemoveListener(CloseDescription);
 
         _objectActive = false;
     }
@@ -85,6 +96,10 @@ public class TrackDistance : MonoBehaviour
             _objectActive = true;
             _anim = _instantiateObject.GetComponent<Animator>();
         }
+    }
+
+    private void CloseDescription() {
+        _popup.SetActive(false);
     }
 }
 

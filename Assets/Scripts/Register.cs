@@ -35,7 +35,7 @@ public class Register : MonoBehaviour
             return;
         }
 
-        var usersData = SavingService.LoadData();
+        var usersData = SavingService.LoadData<User>();
 
         usersData ??= new() { Entities = new List<User>() };
 
@@ -46,12 +46,11 @@ public class Register : MonoBehaviour
             return;
         }
 
-        usersData.Entities.Add(new User() {
+        SavingService.SaveData(new User() {
             Login = _login.text,
             Password = _password.text
         });
 
-        SavingService.SaveData(usersData);
         SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
     }
 }

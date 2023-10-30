@@ -1,40 +1,47 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public static class SavingService
 {
-    /// <summary>
-    /// Путь временным файла приложения.
-    /// </summary>
-    public static string filePath = Application.persistentDataPath + "/usersdata.json";
+    private static readonly string userFilePath = Application.persistentDataPath + "/usersdata.json";
+    private static readonly string animalFilePath = Application.persistentDataPath + "/animals.json";
 
-    /// <summary>
-    /// Сохранение списка пользоватей.
-    /// </summary>
-    /// <param name="data"></param>
-    public static void SaveData(Users data) {
+    public static void SaveData<T>(T entity) {
+        var type = entity.GetType();
+        var filePath = type.Name switch {
+            nameof(User) => userFilePath,
+            nameof(Animal) => animalFilePath,
+            _ => string.Empty
+        };
+
         try {
+            var data = LoadData<T>();
+            data.Entities.Add(entity);
+
             using var stream = new FileStream(filePath, FileMode.Create);
             using var writer = new StreamWriter(stream);
 
             writer.Write(JsonUtility.ToJson(data, true));
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             Debug.LogException(ex);
         }
     }
 
-    /// <summary>
-    /// Загрузка списка пользователей.
-    /// </summary>
-    /// <returns></returns>
-    public static Users LoadData() {
+    public static Data<T> LoadData<T>() {
+        var type = typeof(T);
+        var filePath = type.Name switch {
+            nameof(User) => userFilePath,
+            nameof(Animal) => animalFilePath,
+            _ => string.Empty
+        };
+
         if (!File.Exists(filePath)) {
-            return null;
+            return new Data<T>() { Entities = new List<T>() };
         }
 
-        var dataToLoad = "";
+        var dataToLoad = string.Empty;
 
         try {
             using var stream = new FileStream(filePath, FileMode.OpenOrCreate);
@@ -45,6 +52,8 @@ public static class SavingService
             Debug.LogException(ex);
         }
 
-        return dataToLoad != "" ? JsonUtility.FromJson<Users>(dataToLoad) : null;
+        return dataToLoad != string.Empty
+            ? JsonUtility.FromJson<Data<T>>(dataToLoad)
+            : new Data<T>() { Entities = new List<T>() };
     }
 }

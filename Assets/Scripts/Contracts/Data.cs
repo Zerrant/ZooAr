@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class Animals
+public class Data<T>
 {
-    public List<Animal> Entities;
+    public List<T> Entities;
 }

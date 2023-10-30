@@ -20,7 +20,7 @@ public class Login : MonoBehaviour
     /// </summary>
     public void OnLoginClicked() {
         var usersData = SavingService.LoadData();
-        var user = usersData.Users.FirstOrDefault(user => user.Login == _login.text && user.Password == _password.text);
+        var user = usersData.Entities.FirstOrDefault(user => user.Login == _login.text && user.Password == _password.text);
 
         if (user != null) {
             SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);

@@ -13,7 +13,7 @@ public static class SavingService
     /// Сохранение списка пользоватей.
     /// </summary>
     /// <param name="data"></param>
-    public static void SaveData(UsersData data) {
+    public static void SaveData(Users data) {
         try {
             using var stream = new FileStream(filePath, FileMode.Create);
             using var writer = new StreamWriter(stream);
@@ -29,7 +29,7 @@ public static class SavingService
     /// Загрузка списка пользователей.
     /// </summary>
     /// <returns></returns>
-    public static UsersData LoadData() {
+    public static Users LoadData() {
         if (!File.Exists(filePath)) {
             return null;
         }
@@ -45,6 +45,6 @@ public static class SavingService
             Debug.LogException(ex);
         }
 
-        return dataToLoad != "" ? JsonUtility.FromJson<UsersData>(dataToLoad) : null;
+        return dataToLoad != "" ? JsonUtility.FromJson<Users>(dataToLoad) : null;
     }
 }

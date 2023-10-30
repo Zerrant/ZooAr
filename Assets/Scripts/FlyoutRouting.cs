@@ -1,13 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FlyoutRouting : MonoBehaviour {
-    [SerializeField] private string _profileScene;
+public class FlyoutRouting : MonoBehaviour
+{
+    private const string PROFILE = "ProfileScene";
+    private const string LIBRARY = "LibraryScene";
+    private const string CAMERA = "SampleScene";
 
-    public void OnProfileClick() {
-        var activeScene = SceneManager.GetActiveScene();
+    private Scene _currentScene;
 
-        if (activeScene.name != _profileScene)
-            SceneManager.LoadSceneAsync(_profileScene, LoadSceneMode.Single);
+    private void Start() {
+        _currentScene = SceneManager.GetActiveScene();
+    }
+
+    public void OnProfileClick() => ChangeScene(PROFILE);
+
+    public void OnCameraClick() => ChangeScene(CAMERA);
+
+    public void OnLibraryClick() => ChangeScene(LIBRARY);
+
+    private void ChangeScene(string sceneName) {
+        if (sceneName != _currentScene.name)
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
     }
 }

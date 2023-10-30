@@ -37,16 +37,16 @@ public class Register : MonoBehaviour
 
         var usersData = SavingService.LoadData();
 
-        usersData ??= new() { Users = new List<User>() };
+        usersData ??= new() { Entities = new List<User>() };
 
-        if (usersData.Users.Any(user => user.Login == _login.text)) {
+        if (usersData.Entities.Any(user => user.Login == _login.text)) {
             _popupText.text = "Пользователь с таким именем уже существует";
             _popup.SetActive(true);
             _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
             return;
         }
 
-        usersData.Users.Add(new User() {
+        usersData.Entities.Add(new User() {
             Login = _login.text,
             Password = _password.text
         });

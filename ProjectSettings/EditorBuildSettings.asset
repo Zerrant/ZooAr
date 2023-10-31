@@ -14,4 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProfileScene.unity
     guid: 9fea82cca39baa643ab45496101b4481
+  - enabled: 1
+    path: Assets/Scenes/TRex.unity
+    guid: 15dc090033441a94ea0decd1cca55788
+  - enabled: 1
+    path: Assets/Scenes/Spinosaurus.unity
+    guid: 2a752ee3c84c07e41a726a760d2d6645
+  - enabled: 1
+    path: Assets/Scenes/Pterodactyl.unity
+    guid: 1a05bc37f43abb14f9e1daae0b3dec3e
+  - enabled: 1
+    path: Assets/Scenes/Parasaurolof.unity
+    guid: 8648a1fa13b725e46ae1b5e85988fd54
+  - enabled: 1
+    path: Assets/Scenes/Mosasaurus.unity
+    guid: 6917ee73216cf9141a1a734ce032beb9
   m_configObjects: {}

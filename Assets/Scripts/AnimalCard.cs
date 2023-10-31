@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AnimalCard : MonoBehaviour
@@ -13,6 +14,8 @@ public class AnimalCard : MonoBehaviour
     [SerializeField] private TMP_Text _width;
     [SerializeField] private Image _image;
     [SerializeField] private Sprite _animalImage;
+    [SerializeField] private Button _previewButton;
+    [SerializeField] private string _previewScene;
     [Header("Animal")]
     [SerializeField] private string _animalName;
 
@@ -29,6 +32,8 @@ public class AnimalCard : MonoBehaviour
         _length.text = $"{_animal.Length:f0} ì.";
         _width.text = $"{_animal.Width:f0} ì.";
         _image.sprite = _animalImage;
+        _previewButton.onClick.RemoveAllListeners();
+        _previewButton.onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));
 
         _animalCardUI.SetActive(true);
     }

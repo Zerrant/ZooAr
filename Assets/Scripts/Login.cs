@@ -19,8 +19,8 @@ public class Login : MonoBehaviour
     /// Осуществить вход в учётную запись при нажатии на кнопку войти.
     /// </summary>
     public void OnLoginClicked() {
-        var usersData = SavingService.LoadData();
-        var user = usersData.Users.FirstOrDefault(user => user.Login == _login.text && user.Password == _password.text);
+        var usersData = SavingService.LoadData<User>();
+        var user = usersData.Entities.FirstOrDefault(user => user.Login == _login.text && user.Password == _password.text);
 
         if (user != null) {
             SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);

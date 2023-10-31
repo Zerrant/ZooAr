@@ -35,23 +35,22 @@ public class Register : MonoBehaviour
             return;
         }
 
-        var usersData = SavingService.LoadData();
+        var usersData = SavingService.LoadData<User>();
 
-        usersData ??= new() { Users = new List<User>() };
+        usersData ??= new() { Entities = new List<User>() };
 
-        if (usersData.Users.Any(user => user.Login == _login.text)) {
+        if (usersData.Entities.Any(user => user.Login == _login.text)) {
             _popupText.text = "Пользователь с таким именем уже существует";
             _popup.SetActive(true);
             _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
             return;
         }
 
-        usersData.Users.Add(new User() {
+        SavingService.SaveData(new User() {
             Login = _login.text,
             Password = _password.text
         });
 
-        SavingService.SaveData(usersData);
         SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
     }
 }

@@ -16,6 +16,7 @@ public class FlyoutRouting : MonoBehaviour
         _currentScene = SceneManager.GetActiveScene();
         _profilePanel.SetActive(true);
         _libraryPanel.SetActive(false);
+        _animalPanel.SetActive(false);
     }
 
     public void OnProfileClick() {

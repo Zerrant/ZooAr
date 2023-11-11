@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 3439782356
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 33dd285c9d90308839923a7df5f31eea
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f0fe76b9e042852e572144d0f5463f3a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Animation/mosasaurus/mosasaurus_final.prefab
+Dependencies: []

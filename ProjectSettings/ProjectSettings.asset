@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 23
-  productGUID: 57e83b133f8be0348a5ddf3f6691bc37
+  productGUID: c151c90a0dd962448b720674889c3a12
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -358,22 +358,22 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 293aedcd70a94a64ebd6c98ddfb5d876, type: 3}
-      - {fileID: 2800000, guid: b47b9c8b0d5210043988e40dfb3499f6, type: 3}
+      - {fileID: 2800000, guid: 17890dd0942584ef7b1886ffc15250a1, type: 3}
+      - {fileID: 2800000, guid: 44f5763023bff4d3dbfb13b858cff6ce, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a36342426bddfe643a855d31478815ed, type: 3}
-      - {fileID: 2800000, guid: c5843dc97022270429387bf47f2ba827, type: 3}
+      - {fileID: 2800000, guid: 2c78137d6929a46249f124bad6c3c8a8, type: 3}
+      - {fileID: 2800000, guid: b4f6488d420d24b3fa919a0d3a53bcf2, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 74efac55518668643973f8132688275a, type: 3}
-      - {fileID: 2800000, guid: 64691f7181e414c4a8f1bc8c526e9968, type: 3}
+      - {fileID: 2800000, guid: ad05b3745e8844194bae1994e47cd9b3, type: 3}
+      - {fileID: 2800000, guid: 78781f500fd7e4133b37547cebfe0231, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
@@ -827,7 +827,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: VUFORIA_ANDROID_SETTINGS;AMPLIFY_SHADER_EDITOR
+    Android: VUFORIA_ANDROID_SETTINGS
     Windows Store Apps: VUFORIA_WSA_SETTINGS
     iPhone: VUFORIA_IOS_SETTINGS
   additionalCompilerArguments: {}
@@ -1015,13 +1015,13 @@ PlayerSettings:
     m_VersionCode: 10184
     m_VersionName: 10.18.4
   apiCompatibilityLevel: 3
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 88413bba-02c6-49f4-81b7-1c2ea4432cd8
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: ZooAr 2023-11-10_23-17-41
+  organizationId: stev01
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1
   playerDataPath: 

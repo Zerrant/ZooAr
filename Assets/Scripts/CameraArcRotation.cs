@@ -1,47 +1,47 @@
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+
+[RequireComponent(typeof(Camera))]
 public class CameraArcRotation : MonoBehaviour
 {
-    private Vector3 initialMousePos;
-    private Vector3 currentMousePos;
-    private float rotationSpeed = 1.0f;
-    private Camera mainCamera;
+    [SerializeField] private float _rotationSpeed = 0.5f;
 
-    void Start()
-    {
-        mainCamera = Camera.main;
+    private Camera _mainCamera;
+    private Transform _cahcedTransform;
+    private float _radius = 1.0f;
+    private Vector2 _previousTouch;
+
+    void OnEnable() {
+        TouchSimulation.Enable();
+        EnhancedTouchSupport.Enable();
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            initialMousePos = Input.mousePosition;
-        }
+    void Start() {
+        Touch.onFingerMove += OnFingerMove;
+        Touch.onFingerDown += OnFingerDown;
 
-        if (Input.GetMouseButton(0))
-        {
-            currentMousePos = Input.mousePosition;
+        _cahcedTransform = GetComponent<Transform>();
+        _mainCamera = GetComponent<Camera>();
 
-            Vector3 initialPosition = ScreenToWorldPoint(initialMousePos);
-            Vector3 currentPosition = ScreenToWorldPoint(currentMousePos);
-
-            float angle = Vector3.SignedAngle(initialPosition, currentPosition, Vector3.up);
-
-            // Вращаем камеру вокруг нулевых координат сцены
-            transform.RotateAround(Vector3.zero, Vector3.up, angle * rotationSpeed);
-
-            initialMousePos = currentMousePos;
-        }
+        _radius = _mainCamera.transform.position.magnitude;
     }
 
-    Vector3 ScreenToWorldPoint(Vector3 screenPos)
-    {
-        Ray ray = mainCamera.ScreenPointToRay(screenPos);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            return hit.point;
-        }
-        return Vector3.zero;
+    // Нахождение угла при помощи радиуса и длины дуги :) Геометрию знать надо
+    private void OnFingerMove(Finger finger) {
+        var l = (finger.currentTouch.screenPosition - _previousTouch).x;
+        if (l == 0) return;
+
+        // Производим трансформацию длины отклонения
+        // Чем больше разница, тем выше будет скорость, так возрастает квадрат -_-
+        l *= Mathf.Abs(l) / 2;
+
+        var angle = l * 360 / (6.283184f * _radius);
+        _cahcedTransform.RotateAround(Vector3.zero, Vector3.up, angle * _rotationSpeed * Time.deltaTime);
+
+        _previousTouch = finger.currentTouch.screenPosition;
     }
+
+    private void OnFingerDown(Finger finger) => _previousTouch = finger.currentTouch.screenPosition;
 }

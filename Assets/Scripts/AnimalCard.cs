@@ -19,22 +19,46 @@ public class AnimalCard : MonoBehaviour
     [Header("Animal")]
     [SerializeField] private string _animalName;
 
-    private Animal _animal;
+    public Animal _animal = new Animal();
 
-    private void Start() {
-        var data = SavingService.LoadData<Animal>();
-        _animal = data.Entities.First(entity => entity.Name == _animalName);
-    }
+    //private void Start()
+    //{
+    //    var data = SavingService.LoadData<Animal>();
+    //    _animal = data.Entities.First(entity => entity.Name == _animalName);
+    //}
 
     public void OpenAnimalDescription() {
-        _name.text = _animal.Name;
-        _weight.text = $"~{_animal.Weight:f1}";
-        _length.text = $"{_animal.Length:f0} ì.";
-        _width.text = $"{_animal.Width:f0} ì.";
-        _image.sprite = _animalImage;
-        _previewButton.onClick.RemoveAllListeners();
-        _previewButton.onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));
+        GameObject animalDescriptionPanel = GameObject.Find("AnimalDescriptionPanel");
+
+        animalDescriptionPanel.transform.Find("Name").GetComponent<TextMeshPro>().text = _animal.Name;
+        animalDescriptionPanel.transform.Find("Weight").GetComponent<TextMeshPro>().text = $"~{_animal.Weight:f1}";
+        animalDescriptionPanel.transform.Find("Length").GetComponent<TextMeshPro>().text = $"{_animal.Length:f0} ì.";
+        animalDescriptionPanel.transform.Find("Width").GetComponent<TextMeshPro>().text = $"{_animal.Width:f0} ì.";
+        animalDescriptionPanel.transform.Find("AnimalImage").GetComponent<Image>().sprite  = _animalImage;
+        animalDescriptionPanel.transform.Find("Preview").GetComponent<Button>().onClick.RemoveAllListeners();
+        animalDescriptionPanel.transform.Find("Preview").GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));
+        //_name.text = _animal.Name;
+        //_weight.text = $"~{_animal.Weight:f1}";
+        //_length.text = $"{_animal.Length:f0} ì.";
+        //_width.text = $"{_animal.Width:f0} ì.";
+        //_image.sprite = _animalImage;
+        //_previewButton.onClick.RemoveAllListeners();
+        //_previewButton.onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));
 
         _animalCardUI.SetActive(true);
+    }
+
+    public string GetAnimalName()
+    {
+        return _animalName;
+    }
+
+    public void SetAnimal(Animal animal)
+    {
+        _animal.Name = animal.Name;
+        _animal.Length = animal.Length;
+        _animal.Width = animal.Width;
+        _animal.Weight = animal.Weight;
+        _animal.StructureDescription = animal.StructureDescription;
     }
 }

@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,15 +31,15 @@ public class AnimalCard : MonoBehaviour
 
         animalDescriptionPanel.transform.Find("Name").GetComponent<TextMeshPro>().text = _animal.Name;
         animalDescriptionPanel.transform.Find("Weight").GetComponent<TextMeshPro>().text = $"~{_animal.Weight:f1}";
-        animalDescriptionPanel.transform.Find("Length").GetComponent<TextMeshPro>().text = $"{_animal.Length:f0} ì.";
-        animalDescriptionPanel.transform.Find("Width").GetComponent<TextMeshPro>().text = $"{_animal.Width:f0} ì.";
+        animalDescriptionPanel.transform.Find("Length").GetComponent<TextMeshPro>().text = $"{_animal.Length:f0} ï¿½.";
+        animalDescriptionPanel.transform.Find("Width").GetComponent<TextMeshPro>().text = $"{_animal.Width:f0} ï¿½.";
         animalDescriptionPanel.transform.Find("AnimalImage").GetComponent<Image>().sprite  = _animalImage;
         animalDescriptionPanel.transform.Find("Preview").GetComponent<Button>().onClick.RemoveAllListeners();
         animalDescriptionPanel.transform.Find("Preview").GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));
         //_name.text = _animal.Name;
         //_weight.text = $"~{_animal.Weight:f1}";
-        //_length.text = $"{_animal.Length:f0} ì.";
-        //_width.text = $"{_animal.Width:f0} ì.";
+        //_length.text = $"{_animal.Length:f0} ï¿½.";
+        //_width.text = $"{_animal.Width:f0} ï¿½.";
         //_image.sprite = _animalImage;
         //_previewButton.onClick.RemoveAllListeners();
         //_previewButton.onClick.AddListener(() => SceneManager.LoadSceneAsync(_previewScene, LoadSceneMode.Single));

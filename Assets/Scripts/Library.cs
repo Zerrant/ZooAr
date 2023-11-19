@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Library : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _animalsPrefabs;
+    [SerializeField] private GameObject _animalDescriptionPanel;
     [SerializeField] private RectTransform _panel;
     private Data<Animal> _animalsList;
     private List<GameObject> _drawIcons = new List<GameObject>();
@@ -16,16 +17,16 @@ public class Library : MonoBehaviour
     private void Start()
     {
         Redraw();
-
     }
     
     private void Redraw()
     {
         ClearDrawn();
         _animalsList = SavingService.LoadData<Animal>();
-        _animalsList.Entities.Add(new Animal { Name = "T-Rex", Weight = 1f, Length = 1f, Width = 1f, StructureDescription ="Динозавр"});
+        _animalsList.Entities.Add(new Animal { Name = "T-Rex", Weight = 3f, Length = 3f, Width = 3f, StructureDescription ="Динозавр"});
         _animalsList.Entities.Add(new Animal { Name = "Parasaurolof", Weight = 1f, Length = 1f, Width = 1f, StructureDescription = "Динозавр" });
         if (_animalsList.Entities.Count == 0) return;
+
 
         foreach (var entity in _animalsList.Entities)
         {
@@ -35,6 +36,7 @@ public class Library : MonoBehaviour
                 {
                     GameObject icon = Instantiate(animalprefab);
                     icon.GetComponent<AnimalCard>().SetAnimal(entity);
+                    icon.GetComponent<AnimalCard>().SetAnimalDescriptionPanel(_animalDescriptionPanel);
                     icon.transform.localScale = new Vector3(4,4,4);
                     icon.transform.SetParent(_panel);
 
@@ -54,5 +56,4 @@ public class Library : MonoBehaviour
         //_animalsList.Entities.Clear();
         _drawIcons.Clear();
     }
-    
 }

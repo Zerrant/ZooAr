@@ -2844,7 +2844,7 @@ RectTransform:
   m_GameObject: {fileID: 1191456743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999891, y: 0.9999891, z: 0.9999891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1043362076}
@@ -2913,6 +2913,7 @@ MonoBehaviour:
   - {fileID: 6371780243793443527, guid: 8931c31be89728d4493a8acf16d14f18, type: 3}
   - {fileID: 5409426909258919602, guid: 0a7c538dacfeab749a5dc7bcccff2aae, type: 3}
   - {fileID: 1614277647602430560, guid: 1d387785de6aaa9488fc58d135dfc52a, type: 3}
+  _animalDescriptionPanel: {fileID: 1576838587}
   _panel: {fileID: 443311151}
   textJson: {fileID: 0}
 --- !u!1 &1249136780
@@ -4117,6 +4118,7 @@ GameObject:
   - component: {fileID: 1576838588}
   - component: {fileID: 1576838590}
   - component: {fileID: 1576838589}
+  - component: {fileID: 1576838591}
   m_Layer: 5
   m_Name: AnimalDescriptionPanel
   m_TagString: Untagged
@@ -4186,6 +4188,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576838587}
   m_CullTransparentMesh: 1
+--- !u!114 &1576838591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576838587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fcb4829ca630f498d40b4cfe26bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: {fileID: 755900108}
+  _weight: {fileID: 1945659792}
+  _length: {fileID: 1253529916}
+  _width: {fileID: 1323252609}
+  _image: {fileID: 709448097}
+  _previewButton: {fileID: 192188763}
 --- !u!1 &1595963875
 GameObject:
   m_ObjectHideFlags: 0

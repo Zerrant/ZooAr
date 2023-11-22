@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,16 +18,17 @@ public class Login : MonoBehaviour
     /// Осуществить вход в учётную запись при нажатии на кнопку войти.
     /// </summary>
     public void OnLoginClicked() {
-        var usersData = SavingService.LoadData<User>();
-        var user = usersData.Entities.FirstOrDefault(user => user.Login == _login.text && user.Password == _password.text);
+        StartCoroutine(HttpService.Login(
+            new LoginContract { Login = _login.text, Password = _password.text },
+            () => {
+                if (HttpService.JwtToken != null) {
+                    SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
+                    return;
+                }
 
-        if (user != null) {
-            SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
-            return;
-        }
-
-        _popupText.text = "Неверный логин или пароль";
-        _popup.SetActive(true);
-        _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
+                _popupText.text = "Неверный логин или пароль";
+                _popup.SetActive(true);
+                _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
+            }));
     }
 }

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Library : MonoBehaviour
 {
@@ -23,8 +21,8 @@ public class Library : MonoBehaviour
     {
         ClearDrawn();
         _animalsList = SavingService.LoadData<Animal>();
-        _animalsList.Entities.Add(new Animal { Name = "T-Rex", Weight = 3f, Length = 3f, Width = 3f, StructureDescription ="Динозавр"});
-        _animalsList.Entities.Add(new Animal { Name = "Parasaurolof", Weight = 1f, Length = 1f, Width = 1f, StructureDescription = "Динозавр" });
+        _animalsList.Entities.Add(new Animal { Name = "T-Rex", Weight = 3f, Length = 3f, Width = 3f, StructureDescription ="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"});
+        _animalsList.Entities.Add(new Animal { Name = "Parasaurolof", Weight = 1f, Length = 1f, Width = 1f, StructureDescription = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" });
         if (_animalsList.Entities.Count == 0) return;
 
 
@@ -32,12 +30,12 @@ public class Library : MonoBehaviour
         {
             foreach (var animalprefab in _animalsPrefabs)
             {
-                if (entity.Name == animalprefab.GetComponent<AnimalCard>()?.GetAnimalName()) //проверка происходит если у префаба есть компонент AnimalCard
+                if (entity.Name == animalprefab.GetComponent<AnimalCard>()?.GetAnimalName())
                 {
                     GameObject icon = Instantiate(animalprefab);
                     icon.GetComponent<AnimalCard>().SetAnimal(entity);
                     icon.GetComponent<AnimalCard>().SetAnimalDescriptionPanel(_animalDescriptionPanel);
-                    icon.transform.localScale = new Vector3(4,4,4);
+                    icon.transform.localScale = new Vector3(3, 3, 3);
                     icon.transform.SetParent(_panel);
 
                     _drawIcons.Add(icon);

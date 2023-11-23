@@ -3,55 +3,56 @@ using UnityEngine;
 
 public class Library : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _animalsPrefabs;
-    [SerializeField] private GameObject _animalDescriptionPanel;
+    [SerializeField] private AnimalDescriptionPanel _animalDescriptionPanel;
+    [SerializeField] private GameObject _animalCardPrefab;
     [SerializeField] private RectTransform _panel;
-    private Data<Animal> _animalsList;
+
     private List<GameObject> _drawIcons = new List<GameObject>();
 
     public TextAsset textJson;
 
 
-    private void Start()
-    {
-        Redraw();
-    }
+    private void Start() => Redraw();
     
     private void Redraw()
     {
         ClearDrawn();
-        _animalsList = SavingService.LoadData<Animal>();
-        _animalsList.Entities.Add(new Animal { Name = "T-Rex", Weight = 3f, Length = 3f, Width = 3f, StructureDescription ="��������"});
-        _animalsList.Entities.Add(new Animal { Name = "Parasaurolof", Weight = 1f, Length = 1f, Width = 1f, StructureDescription = "��������" });
-        if (_animalsList.Entities.Count == 0) return;
-
-
-        foreach (var entity in _animalsList.Entities)
+        StartCoroutine(HttpService.GetAnimalPage(animals =>
         {
-            foreach (var animalprefab in _animalsPrefabs)
-            {
-                if (entity.Name == animalprefab.GetComponent<AnimalCard>()?.GetAnimalName())
-                {
-                    GameObject icon = Instantiate(animalprefab);
-                    icon.GetComponent<AnimalCard>().SetAnimal(entity);
-                    icon.GetComponent<AnimalCard>().SetAnimalDescriptionPanel(_animalDescriptionPanel);
-                    icon.transform.localScale = new Vector3(3, 3, 3);
-                    icon.transform.SetParent(_panel);
+            foreach (var animal in animals.data) {
+                var icon = Instantiate(_animalCardPrefab);
+                var animalCard = icon.GetComponent<AnimalCard>();
 
-                    _drawIcons.Add(icon);
-                    break;
+                animalCard.Animal = animal;
+                animalCard.AnimalDescriptionPanel = _animalDescriptionPanel;
+
+                icon.transform.localScale = new Vector3(1, 1, 1);
+                icon.transform.SetParent(_panel);
+
+                _drawIcons.Add(icon);
+
+                var position = Vector2.zero;
+                var row = 0;
+                if (_drawIcons.Count % 2 == 0) {
+                    position.x = 148;
+                    row = _drawIcons.Count / 2;
+                } else {
+                    row = (_drawIcons.Count - 1) / 2;
                 }
+
+                position.y = row * 179;
+
+                icon.transform.position = new(position.x, position.y, 0);
             }
-        }
+        }));
     }
 
     private void ClearDrawn()
     {
-        for (int i = 0; i < _drawIcons.Count; i++)
-        {
+        for (int i = 0; i < _drawIcons.Count; i++) {
             Destroy(_drawIcons[i]);
         }
-        //_animalsList.Entities.Clear();
+
         _drawIcons.Clear();
     }
 }

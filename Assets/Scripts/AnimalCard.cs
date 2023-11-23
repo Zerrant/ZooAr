@@ -1,45 +1,37 @@
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class AnimalCard : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private GameObject _animalCardUI;
     [SerializeField] private Image _image;
-    [SerializeField] private Sprite _animalImage;
-    [SerializeField] private Button _previewButton;
     [SerializeField] private string _previewScene;
-    [Header("Animal")]
-    [SerializeField] private string _animalName;
 
-    Animal _animal = new Animal();
-    GameObject animalDescriptionPanel;
+    public AnimalDescriptionPanel AnimalDescriptionPanel { set => _animalDescriptionPanel = value; }
+    public Animal Animal { 
+        set {
+            _animal.id = value.id;
+            _animal.name = value.name;
+            _animal.length = value.length;
+            _animal.width = value.width;
+            _animal.weight = value.weight;
+            _animal.description = value.description;
 
-    
-
-    public void OpenAnimalDescription() {
-        animalDescriptionPanel.GetComponent<AnimalDescriptionPanel>().SetAnimalDescription(_animal, _animalImage, _previewScene);
+            StartCoroutine(HttpService.GetPreview(_animal.id, texture => {
+                _animalPreviewSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new(0.5f, 0.5f), 100);
+                _image.sprite = _animalPreviewSprite;
+            }));
+        }
     }
 
-    public string GetAnimalName()
-    {
-        return _animalName;
-    }
+    private Animal _animal = new();
+    private AnimalDescriptionPanel _animalDescriptionPanel;
+    private Sprite _animalPreviewSprite;
 
-    public void SetAnimal(Animal animal)
-    {
-        _animal.Name = animal.Name;
-        _animal.Length = animal.Length;
-        _animal.Width = animal.Width;
-        _animal.Weight = animal.Weight;
-        _animal.StructureDescription = animal.StructureDescription;
-    }
+    public void OpenAnimalDescription() => _animalDescriptionPanel.SetAnimalDescription(_animal, _animalPreviewSprite, _previewScene);
 
-    public void SetAnimalDescriptionPanel(GameObject ADP)
-    {
-        animalDescriptionPanel = ADP;
+    private void Start() {
+        GetComponent<Button>().onClick.AddListener(() => OpenAnimalDescription());
     }
 }

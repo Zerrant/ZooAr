@@ -19,13 +19,6 @@ public class TrackDistance : MonoBehaviour
     [SerializeField] private GameObject _prefabObject;
     [SerializeField] [TextArea(5, 10)] private string _description;
 
-    [Header("Animal data")]
-    [SerializeField] private string _name;
-    [SerializeField] private float _weight;
-    [SerializeField] private float _length;
-    [SerializeField] private float _width;
-    [SerializeField] [TextArea(5, 10)] private string _structure;
-
     private GameObject _instantiateObject;
     private Transform _cahcedTransform;
     private Animator _anim;
@@ -50,14 +43,6 @@ public class TrackDistance : MonoBehaviour
 #if DEBUG
         Debug.Log(_instantiateObject.name);
 #endif
-
-        SavingService.SaveData(new Animal {
-            Name = _name,
-            Weight = _weight,
-            Length = _length,
-            Width = _width,
-            StructureDescription = _structure
-        });
     }
 
     /// <summary>

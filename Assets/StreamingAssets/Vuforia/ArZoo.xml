@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
-    <ImageTarget name="Parasaurolophus" size="5.000000 7.719168" />
-    <ImageTarget name="Mosasaurus" size="5.000000 7.719168" />
     <ImageTarget name="Pterodactyl" size="5.000000 7.719168" />
+    <ImageTarget name="Mosasaurus" size="5.000000 7.719168" />
+    <ImageTarget name="Parasaurolophus" size="5.000000 7.719168" />
     <ImageTarget name="Spinosaurus" size="5.000000 7.719168" />
     <ImageTarget name="T-Rex" size="5.000000 7.719168" />
   </Tracking>

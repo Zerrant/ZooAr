@@ -20,7 +20,12 @@ public class AnimalDescriptionPanel : MonoBehaviour
         _width.text = animal.width;
         _image.sprite = animalSprite;
         _previewButton.onClick.RemoveAllListeners();
-        _previewButton.onClick.AddListener(() => SceneManager.LoadSceneAsync(previewScene, LoadSceneMode.Single));
+        _previewButton.onClick.AddListener(() => {
+            SceneManager.LoadSceneAsync("PreviewScene", LoadSceneMode.Single);
+            CurrentAnimal.AnimalName = animal.name;
+            CurrentAnimal.AnimalId = animal.id;
+            CurrentAnimal.AssetBundleGameobject = animal.assetBundleGameobject;
+        });
 
         gameObject.SetActive(true);
     }

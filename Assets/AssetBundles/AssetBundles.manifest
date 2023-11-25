@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 35526653
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: trexbundle
+      Dependencies: {}
+    Info_1:
+      Name: spinosaurusbundle
+      Dependencies: {}
+    Info_2:
+      Name: pterodactylbundle
+      Dependencies: {}
+    Info_3:
+      Name: parasaurolofbundle
+      Dependencies: {}
+    Info_4:
+      Name: mosasaurusbundle
+      Dependencies: {}

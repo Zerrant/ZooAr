@@ -17,6 +17,7 @@ public class AnimalCard : MonoBehaviour
             _animal.width = value.width;
             _animal.weight = value.weight;
             _animal.description = value.description;
+            _animal.assetBundleGameobject = value.assetBundleGameobject;
 
             StartCoroutine(HttpService.GetPreview(_animal.id, texture => {
                 _animalPreviewSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new(0.5f, 0.5f), 100);

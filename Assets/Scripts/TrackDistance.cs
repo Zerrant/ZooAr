@@ -11,7 +11,6 @@ public class TrackDistance : MonoBehaviour
 {
     [Header("UI Components")]
     [SerializeField] private GameObject _popup;
-    [SerializeField] private TMP_Text _popupText;
     [SerializeField] private Button _closeButton;
 
     [Header("Animal model components")]
@@ -36,7 +35,6 @@ public class TrackDistance : MonoBehaviour
         }
 
         _popup.SetActive(true);
-        _popupText.text = _description;
 
         _closeButton.onClick.AddListener(CloseDescription);
 
@@ -61,9 +59,7 @@ public class TrackDistance : MonoBehaviour
 
     private void Start() {
         _cahcedTransform = GetComponent<Transform>();
-
         _popup.SetActive(false);
-        _popupText.text = string.Empty;
     }
 
     private void Update() {
@@ -98,8 +94,6 @@ public class TrackDistance : MonoBehaviour
         }
     }
 
-    private void CloseDescription() {
-        _popup.SetActive(false);
-    }
+    private void CloseDescription() => _popup.SetActive(false);
 }
 

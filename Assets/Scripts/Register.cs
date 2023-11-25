@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,22 +33,12 @@ public class Register : MonoBehaviour
             return;
         }
 
-        var usersData = SavingService.LoadData<User>();
-
-        usersData ??= new() { Entities = new List<User>() };
-
-        if (usersData.Entities.Any(user => user.Login == _login.text)) {
-            _popupText.text = "Пользователь с таким именем уже существует";
-            _popup.SetActive(true);
-            _popupOkButton.onClick.AddListener(() => _popup.SetActive(false));
-            return;
-        }
-
-        SavingService.SaveData(new User() {
-            Login = _login.text,
-            Password = _password.text
-        });
-
-        SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
+        StartCoroutine(HttpService.Register(
+            new RegisterContract() {
+                Login = _login.text,
+                Password = _password.text
+            },
+            () => SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single)
+        ));
     }
 }

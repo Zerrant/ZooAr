@@ -8,7 +8,7 @@ public static class HttpService {
     public static string IpAddress => _ipAddress;
     public static string JwtToken => _jwtToken;
 
-    private static string _ipAddress = "http://192.168.3.9:5012";
+    private static string _ipAddress = "https://90b2-188-233-108-141.ngrok-free.app";
     private static string _jwtToken;
 
     public static IEnumerator Login(LoginContract loginContract, Action callback = null) {

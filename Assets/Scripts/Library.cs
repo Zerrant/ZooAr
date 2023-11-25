@@ -26,7 +26,7 @@ public class Library : MonoBehaviour
                 animalCard.Animal = animal;
                 animalCard.AnimalDescriptionPanel = _animalDescriptionPanel;
 
-                icon.transform.localScale = new Vector3(1, 1, 1);
+                icon.transform.localScale = new Vector3(3, 3, 3);
                 icon.transform.SetParent(_panel);
 
                 _drawIcons.Add(icon);
